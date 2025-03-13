@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">MQTT-Test</string>
+    <string name="connecting">Connecting...</string>
+</resources>
