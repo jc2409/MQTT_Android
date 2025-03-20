@@ -1,3 +1,5 @@
+# MQTT Client on Android
+
 This repo is the next step of [https://github.com/jc2409/STM32L4_MQTT](https://github.com/jc2409/STM32L4_MQTT)
 
 In the previous project, we could succesfully make connection between our MQTT client (B-L475E-IOT01A1 Board) and our MQTT broker on a Cloud Instance (AWS EC2 Instance).
