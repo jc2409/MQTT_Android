@@ -25,7 +25,63 @@ Go to `res/layout/activity_main.xml` and add the following layout:
 </TableLayout>
 ```
 
-After we add the UI, it's time to develop the backend. In the MainActivity.java, there are three main components:
+Include dependencies in `build.gradle.kts (Module :app)` file as follows:
+```kts
+android {
+    namespace = "com.example.<Projces-Name>"
+    compileSdk = 35
+
+    defaultConfig {
+        applicationId = "com.example.<Projces-Name>"
+        minSdk = 24
+        targetSdk = 35
+        versionCode = 1
+        versionName = "1.0"
+
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            isMinifyEnabled = false
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
+        }
+    }
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
+    }
+    packaging {
+        resources {
+            excludes += listOf("META-INF/INDEX.LIST", "META-INF/io.netty.versions.properties")
+        }
+    }
+
+}
+
+dependencies {
+    implementation(libs.appcompat)
+    implementation(libs.material)
+    implementation(libs.activity)
+    implementation(libs.constraintlayout)
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.ext.junit)
+    androidTestImplementation(libs.espresso.core)
+    implementation("com.hivemq:hivemq-mqtt-client:1.3.5")
+}
+```
+
+Allow internet conection in `AndroidManifest.xml`:
+```xml
+<manifest>
+    <uses-permission android:name="android.permission.INTERNET"/>
+</manifest>
+```
+
+After we add the UI and dependencies, it's time to develop the backend. In the MainActivity.java, there are three main components:
 
 1. **MQTTClient**:
 
